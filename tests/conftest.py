@@ -12,10 +12,10 @@ def pytest_addoption(parser):
         "--browser", default="chrome", help="chose web-driver"
     )
     parser.addoption(
-        "--base_url", default=Urls.BASE_URL
+        "--base_url", default=Urls.BASE_URL, help="insert url"
     )
     parser.addoption(
-        "--drivers", default=os.path.expanduser('~/Desktop/otus/web_drivers')
+        "--drivers", default=os.path.expanduser('~/Desktop/otus/web_drivers'), help='set webdriwers path'
     )
 
 
