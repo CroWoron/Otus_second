@@ -2,8 +2,12 @@ import pytest
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from src.locators import MainPageLocators, CatalogPageLocators, ProductCartLocators, AdminPageLocators, \
-    RegistrationPageLocators
+from page_objects.HeaderNavbarPage import HeaderNavbarPage
+from page_objects.ProductCards import ProductCards
+from page_objects.AdminPages.AdminPage import AdminPage
+from page_objects.AdminPages.AdminDashboardPage import AdminDashboardPage
+from page_objects.AdminPages.AdminProductPage import AdminProductPage
+from page_objects.RegistrationPage import RegistrationPage
 from src.urls import Urls
 
 
@@ -23,6 +27,8 @@ def pytest_addoption(parser):
 def driver(request):
     name_of_browser = request.config.getoption("--browser")
     base_url = request.config.getoption("--base_url")
+    if base_url == 'admin':
+        base_url = Urls.BASE_URL+Urls.ADMIN_ENDPOINT
     drivers = request.config.getoption("--drivers")
     if name_of_browser == 'chrome':
         service = Service(executable_path=os.path.join(drivers, 'chromedriver'))
@@ -37,28 +43,30 @@ def driver(request):
 
 
 @pytest.fixture
-def main_page_locators():
-    return MainPageLocators
+def head_nav():
+    return HeaderNavbarPage
 
 
 @pytest.fixture
-def catalog_page_locator():
-    return CatalogPageLocators
+def product_cards():
+    return ProductCards
 
 
 @pytest.fixture
-def product_card_locator():
-    return ProductCartLocators
-
-
-@pytest.fixture
-def admin_page_locators():
-    return AdminPageLocators
-
+def admin_page():
+    return AdminPage
 
 @pytest.fixture
-def registration_page_locators():
-    return RegistrationPageLocators
+def admin_dashboard_page():
+    return AdminDashboardPage
+
+@pytest.fixture
+def admin_product_page():
+    return AdminProductPage
+
+@pytest.fixture
+def registration_page():
+    return RegistrationPage
 
 
 @pytest.fixture
