@@ -20,9 +20,3 @@ class AdminPage(BasePage):
         self.driver.find_element(*self.ADMIN_USERNAME_FIELD).send_keys('user')
         self.driver.find_element(*self.ADMIN_PASSWORD_FIELD).send_keys('bitnami')
         self.driver.find_element(*self.ADMIN_LOGIN_BUTTON).click()
-
-    def add_new_product(self):
-        pass
-
-    def delete_product(self):
-        pass

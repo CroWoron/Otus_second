@@ -14,5 +14,3 @@ class ProductCards(BasePage):
         cart.find_element(*self.CART_IMAGE)
         cart.find_element(*self.CART_PRICE)
         cart.find_element(*self.CART_TAX)
-
-

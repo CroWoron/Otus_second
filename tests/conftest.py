@@ -24,22 +24,22 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def driver(request):
+def browser(request):
     name_of_browser = request.config.getoption("--browser")
     base_url = request.config.getoption("--base_url")
     if base_url == 'admin':
-        base_url = Urls.BASE_URL+Urls.ADMIN_ENDPOINT
+        base_url = Urls.BASE_URL + Urls.ADMIN_ENDPOINT
     drivers = request.config.getoption("--drivers")
     if name_of_browser == 'chrome':
         service = Service(executable_path=os.path.join(drivers, 'chromedriver'))
-        _driver = webdriver.Chrome(service=service)
+        driver = webdriver.Chrome(service=service)
     elif name_of_browser == 'firefox':
-        _driver = webdriver.Firefox(executable_path=os.path.join(drivers, 'geckodriver'))
+        driver = webdriver.Firefox(executable_path=os.path.join(drivers, 'geckodriver'))
     elif name_of_browser == 'opera':
-        _driver = webdriver.Opera(os.path.join(drivers, 'opera'))
-    _driver.base_url = base_url
-    yield _driver
-    _driver.quit()
+        driver = webdriver.Opera(os.path.join(drivers, 'opera'))
+    driver.base_url = base_url
+    yield driver
+    driver.quit()
 
 
 @pytest.fixture
@@ -56,13 +56,16 @@ def product_cards():
 def admin_page():
     return AdminPage
 
+
 @pytest.fixture
 def admin_dashboard_page():
     return AdminDashboardPage
 
+
 @pytest.fixture
 def admin_product_page():
     return AdminProductPage
+
 
 @pytest.fixture
 def registration_page():

@@ -128,3 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/
+
+allure-report/
+allure-results/
+del/
+src/Root_dir_of_pr.py
+tmp/
+

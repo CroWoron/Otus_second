@@ -11,5 +11,3 @@ class AdminDashboardPage(BasePage):
         self.driver.find_element(*self.MENU_CATALOG).click()
         self.waiter(5).until(EC.element_to_be_clickable(self.PRODUCTS))
         self.driver.find_element(*self.PRODUCTS).click()
-
-
