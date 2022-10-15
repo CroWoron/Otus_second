@@ -40,12 +40,12 @@ class HeaderNavbarPage(BasePage):
         self.driver.find_element(*self.DOLLAR_BUTTON).click()
         self.driver.find_element(*self.DOLLAR_SIGN)
 
-    def switching_to_euro(self):
-        self.driver.find_element(*self.CURRENCY_DROPDOWN).click()
-        self.driver.find_element(*self.EURO_BUTTON).click()
-        self.driver.find_element(*self.EURO_SIGN)
-
     def switching_to_pound(self):
         self.driver.find_element(*self.CURRENCY_DROPDOWN).click()
         self.driver.find_element(*self.STERLING_BUTTON).click()
         self.driver.find_element(*self.STERLING_SIGN)
+
+    def switching_to_euro(self):
+        self.driver.find_element(*self.CURRENCY_DROPDOWN).click()
+        self.driver.find_element(*self.EURO_BUTTON).click()
+        self.driver.find_element(*self.EURO_SIGN)
